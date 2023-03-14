@@ -1,0 +1,163 @@
+HOTEL MANAGEMENT QUESTION
+CREATE A CLASS HOTEL WITH BELOW ATTRIBUTE
+HOTEL-ID - INT
+HOTEL-NAME - STRING
+HOTEL-CABFACILITY - STRING
+HOTEL-RATING - INT
+HOTEL-FEES - INT 
+WRITE GETTER , SETTER AND PARAMETERISED CONSTRUTOR AS REQUIRED .
+CREATE A CLASS SOLUTION AND WRITE MAIN METHOD IN IT INSIDE MAIN MAIN METHOD WRITE 1. STATIC METHOD-- { hotelByHighestRating }
+1. hotelByHighestRating  -- in this method two input are taken one is array of HOTEL objects and second is string input which is cabficility of HOTEL
+if rating is greater than 5 and cabfacuility is availble then output the highest rating if it is not greater than 5 then it should return 0 ;
+condition 1 --> if hotel rating below 5 then it should be zero so print ----> "NO HOTEL WITH GIVEN FACILITY"
+condition 2 --> if hoteL rating greater than 5 and CABFACILITY is yes then print hotel rating 
+Take 4 HOTEL objects as input and one String cabfacility 
+INPUT 1.
+101
+TAJ
+YES
+7
+70000
+102
+RAJ
+NO
+5
+30000
+103
+J&J
+NO
+6
+40000
+104
+ITC
+YES 
+5
+50000
+YES
+OUTPUT 1 .
+7
+INPUT 2.
+101
+TAJ
+YES
+5
+70000
+102
+RAJ
+NO
+5
+30000
+103
+J&J
+NO
+6
+40000
+104
+ITC
+YES 
+5
+50000
+YES
+OUTPUT 2.
+NO HOTEL WITH GIVEN FACILITY
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+package com.shubham;
+import java.util.*;
+public class HotelManagement {
+    public static void main(String args[]){
+        System.out.println("enter array size");
+        Scanner src = new Scanner(System.in);
+
+        int size = src.nextInt();
+        Hotel arr[]= new Hotel[size];
+        for(int i=0;i<size;i++)
+        {
+            int a=src.nextInt();src.nextLine();
+            String b= src.nextLine();
+            String c= src.nextLine();
+            int d=src.nextInt();src.nextLine();
+            int e= src.nextInt();src.nextLine();
+            arr[i]=new Hotel(a,b,c,d,e);
+        }
+        System.out.println("Enter Cab facility");
+        String cabFacility = src.nextLine();
+        int customer1 = hotelByHighestRating(arr,cabFacility);
+        if(customer1==0){
+            System.out.println("No data Found");
+        }else{
+            System.out.println(customer1);
+           ;
+        }
+
+    }
+        static int hotelByHighestRating(Hotel arr[], String cabFacility){
+
+                for(int i=0;i< arr.length;i++)
+                {
+                    if(arr[i].getCabFacility().equalsIgnoreCase(cabFacility) && arr[i].getRating()>5){
+                        return arr[i].getRating();
+                    }
+                }
+            return 0;
+        }
+}
+class Hotel{
+    int id;
+    String cabFacility;
+    String Name;
+    int rating;
+    int fees;
+
+    public Hotel(int id, String cabFacility, String name, int rating, int fees) {
+        this.id = id;
+        this.cabFacility = cabFacility;
+        Name = name;
+        this.rating = rating;
+        this.fees = fees;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getCabFacility() {
+        return cabFacility;
+    }
+
+    public void setCabFacility(String cabFacility) {
+        this.cabFacility = cabFacility;
+    }
+
+    public String getName() {
+        return Name;
+    }
+
+    public void setName(String name) {
+        Name = name;
+    }
+
+    public int getRating() {
+        return rating;
+    }
+
+    public void setRating(int rating) {
+        this.rating = rating;
+    }
+
+    public int getFees() {
+        return fees;
+    }
+
+    public void setFees(int fees) {
+        this.fees = fees;
+    }
+}
