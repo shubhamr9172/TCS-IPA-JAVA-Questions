@@ -1,0 +1,145 @@
+## Problem Statement
+Create a class TravelAgencies with below attributes: \
+
+regNo - int\
+agencyName - String\
+pakageType - String
+price - int\
+flightFaci1ity - boolean
+
+Write getters, setters for the above attributes . Create constructor which takes parameter in the above sequence.
+
+Create class Solution with main method. Implement two static methods - findAgencyWithHighestPackagePrice and agencyDetai1sforGivenIdAndType in Solution class
+**findAgencyWithHighestPackagePrice method: **
+This method will take array of TravelAgencies objects as an input parameter and return the highest package price from the given array of objects.
+
+**agencyDetai1sForGivenIdAndType method: **
+This method will take three input parameters -array of TravelAgencies objects, int parameter regNo and String parameter packageType. 
+The method will return
+
+1. FlightFacility should be available.
+2. The input parameters(regNo and packageType) should matched with the regNo and packageType of TravelAgencies object.
+If any of the above conditions are not met, then the method should return null.
+Note : Same Travel agency can have more than one package type. Travel agency and package type combination is unique. All the searches should be case insensi•
+
+The above mentioned static methods should be called from the main method.
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+package com.shubham;
+import java.util.*;
+public class TravelAgency {
+    public static void main(String args[]){
+        Scanner src= new Scanner(System.in);
+
+        System.out.println("enter array size");
+        int size=src.nextInt();
+        Travel arr[]= new Travel[size];
+        for(int i=0;i<size;i++)
+        {
+            int a=src.nextInt();src.nextLine();
+            String b=src.nextLine();
+            String c=src.nextLine();
+            int d=src.nextInt(); src.nextLine();
+            boolean e=src.nextBoolean();
+            arr[i]=new Travel(a,b,c,d,e);
+        }
+        int user1= findAgencyWithHighestPackagePrice(arr);
+        System.out.println("Highest Pakage Price "+user1);
+
+        System.out.println("Enter Registration No and Pakage Type");
+        int regNo=src.nextInt();src.nextLine();
+        String PakageType=src.nextLine();
+        Travel user2 = agencyDetai1sForGivenIdAndType(arr,regNo,PakageType);
+
+        if(user2==null){
+            System.out.println("No Data Found");
+        }else{
+
+            System.out.println(user2.getAgencyName() +" "+user2.getPrice());
+        }
+
+
+    }
+    static Travel agencyDetai1sForGivenIdAndType(Travel arr[],int regNo,String PakageType){
+        for (int i=0;i<arr.length;i++)
+        {
+            if(arr[i].isFlightFacility()){
+                if(arr[i].getRegNo()==regNo && arr[i].getPakageType().equalsIgnoreCase(PakageType)){
+                    return arr[i];
+                }
+            }
+        }
+        return null;
+    }
+
+    static int findAgencyWithHighestPackagePrice(Travel arr[]){
+        int high=Integer.MIN_VALUE;
+        for (int i=0;i<arr.length;i++)
+        {
+            if(arr[i].getPrice()>high)
+            {
+                high=arr[i].getPrice();
+            }
+        }
+        return high;
+    }
+}
+class Travel{
+    int regNo;
+    String AgencyName;
+    String PakageType;
+    int price;
+    boolean flightFacility;
+
+    public Travel(int regNo, String agencyName, String pakageType, int price, boolean flightFacility) {
+        this.regNo = regNo;
+        AgencyName = agencyName;
+        PakageType = pakageType;
+        this.price = price;
+        this.flightFacility = flightFacility;
+    }
+
+    public int getRegNo() {
+        return regNo;
+    }
+
+    public void setRegNo(int regNo) {
+        this.regNo = regNo;
+    }
+
+    public String getAgencyName() {
+        return AgencyName;
+    }
+
+    public void setAgencyName(String agencyName) {
+        AgencyName = agencyName;
+    }
+
+    public String getPakageType() {
+        return PakageType;
+    }
+
+    public void setPakageType(String pakageType) {
+        PakageType = pakageType;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public boolean isFlightFacility() {
+        return flightFacility;
+    }
+
+    public void setFlightFacility(boolean flightFacility) {
+        this.flightFacility = flightFacility;
+    }
+}
+
+
+
