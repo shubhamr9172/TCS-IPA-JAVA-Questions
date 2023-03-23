@@ -1,0 +1,35 @@
+Question -> Take a String as a Input then take a charecter to search into the string. if the charecter is present into string print the index of charecter else 
+print charecter not found.
+
+
+
+.........................................................................CODE......................................................................................
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    System.out.println("Enter String");
+    Scanner src= new Scanner(System.in);
+    String input = src.nextLine();
+
+    System.out.println("Enter Charecter to search");
+    char searchChar = src.next().charAt(0);
+
+    int index = -1;
+    for(int i=0;i<input.length();i++)
+      {
+        if(input.charAt(i)==searchChar)
+        {
+          index=i;
+          break;
+        }
+      }
+
+    if(index == -1){
+      System.out.println("Charecter is not present");
+    }else{
+      System.out.println("Charecter is present at "+ index);
+    }
+    
+  }
+}
