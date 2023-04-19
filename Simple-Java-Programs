@@ -1,0 +1,26 @@
+// Calculator Program
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    System.out.println("Enter Values");
+    Scanner src = new Scanner (System.in);
+    System.out.println("Enter value 1");
+    int a = src.nextInt();src.nextLine();
+    System.out.println("Enter value 2");
+    int b = src.nextInt();src.nextLine();
+    System.out.println("Enter operator");
+    char ch = src.next().charAt(0);
+    if(ch=='+'){
+      System.out.println(a+" "+ch+" "+b+" = "+(a+b));
+    }else if(ch == '-'){
+      System.out.println(a+" "+ch+" "+b+" = "+(a-b));
+    }else if(ch == '/'){
+      System.out.println(a+" "+ch+" "+b+" = "+(a/b));
+    }else if(ch == '*'){
+      System.out.println(a+" "+ch+" "+b+" = "+(a*b));
+    }
+    
+  }
+}
+
+...............................................................................................................................................................
