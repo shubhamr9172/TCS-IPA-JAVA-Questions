@@ -24,3 +24,49 @@ class Main {
 }
 
 ...............................................................................................................................................................
+
+// Take a string as an input now take a charecter as an input. check if the charecter is present in the string or not if present then print the 
+index of that charecter.
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    System.out.println("Enter String");
+    String input = src.nextLine();
+    System.out.println("Enter charecter");
+    char ch = src.next().charAt(0);
+    int index = 0;
+    for(int i =0;i<input.length();i++){
+      if(input.charAt(i)==ch){
+        index = i;
+        
+      }
+    }
+    System.out.println(ch +" is present at location "+index);
+    
+  }
+}
+...........................................................................................................................................................
+
+//Count the white spaces present in the string.
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    System.out.println("Enter String");
+    String input = src.nextLine();
+    System.out.println("Enter charecter");
+    char ch = ' ';
+    int index = 0;
+    for(int i =0;i<input.length();i++){
+      if(input.charAt(i)==ch){
+        index++;
+        
+      }
+    }
+    System.out.println( "White spaces in string  "+index);
+    
+  }
+}
