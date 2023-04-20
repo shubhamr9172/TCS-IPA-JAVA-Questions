@@ -123,3 +123,30 @@ class Main {
 
 ................................................................................................................................................................
 
+// Write a program to print all the consonants present in the string in lower case as they appear in the string sequentially;
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    System.out.println("Enter String");
+    String s1=src.nextLine();
+
+    String s2 = s1.toLowerCase();
+    int len = s2.length();
+
+    StringBuilder s3 = new StringBuilder();
+
+    for(int i=0;i<len;i++){
+      char ch=s2.charAt(i);
+
+      if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'){continue;}
+      else if(ch>'a'&& ch<'z'){s3.append(ch);}
+    }
+
+    System.out.println("Consonants "+s3);
+    
+  }
+}
+
+................................................................................................................................................................
