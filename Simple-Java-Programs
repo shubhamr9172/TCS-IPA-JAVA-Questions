@@ -93,3 +93,33 @@ class Main {
 }
 
 ................................................................................................................................................................
+
+//Write a program to count number of vowels and consonants present in the given string
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    System.out.println("Enter String");
+    String input = src.nextLine();
+    int vowels=0, cons=0;
+    String inp2=input.toLowerCase();
+    
+    int len = inp2.length();
+    
+    for(int i=0;i<len;i++){
+      char ch =inp2.charAt(i);
+        if(ch == 'a'|| ch=='e'||ch=='i'||ch=='o'||ch=='u'){
+          vowels++;
+        }else if(ch>'a' && ch<'z'){
+          cons++;
+        }
+    }
+
+    System.out.println("Vowels "+vowels);
+    System.out.println("Consonants "+cons);
+  }
+}
+
+................................................................................................................................................................
+
