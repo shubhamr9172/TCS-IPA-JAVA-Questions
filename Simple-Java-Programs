@@ -150,3 +150,40 @@ class Main {
 }
 
 ................................................................................................................................................................
+
+Write main method in Solution class.
+In the main method, write code to read a String value using Scanner and print the smallest vowel. Assume all input values are in lower case.
+E.g If the input value is "Matrix" then output will be 'a' (since there are two vowels a and i where a smaller as per ASCII sequence).
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    String s1 = src.nextLine();
+    int len = s1.length();
+
+    String s2 = s1.toLowerCase();
+
+    int arr1[] = new int[len];
+    int count =0;
+    for(int i=0;i<len;i++){
+      char ch = s2.charAt(i);
+
+      if(ch=='a'||ch=='e'||ch=='i'||ch=='o'||ch=='u'){
+        arr1[count]=(int)ch;
+        count++;
+      }
+    }
+
+    int newarr[] = new int[count];
+    newarr = Arrays.copyOfRange(arr1, 0, count);
+    Arrays.sort(newarr);
+
+    System.out.println((char)newarr[0]);
+    
+  
+  }
+}
+
+................................................................................................................................................................
+
