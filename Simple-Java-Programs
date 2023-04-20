@@ -70,3 +70,26 @@ class Main {
     
   }
 }
+................................................................................................................................................................
+
+// Reverse the given Number 
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    System.out.println("Enter Value");
+    int n = src.nextInt();
+     int rev=0, rem=0;
+    while(n>0){
+      rem=n%10;
+      rev = rev*10+rem;
+      n=n/10;
+      
+    }
+    System.out.println("Reversed Number is "+rev);
+    
+  }
+}
+
+................................................................................................................................................................
