@@ -216,3 +216,112 @@ class Main {
     System.out.println(s2);
   }
 }
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Count Lower Case Charecters in the given String
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    int count =0;
+   String s1 = src.nextLine();
+    for(int i=0;i<s1.length();i++){
+      if(Character.isLowerCase(s1.charAt(i))){
+        count++;
+      }
+    }
+    System.out.println("Total lower case charecters are "+count);
+  }
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+Print odd number charecters from the given string
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+  StringBuilder s2 = new StringBuilder();
+   String s1 = src.nextLine();
+    for(int i=0;i<s1.length();i++){
+      if(i%2==0){
+        continue;
+      }else{
+        s2.append(s1.charAt(i));
+      }
+    }
+    System.out.println("Odd number charecters are "+s2);
+  }
+}
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Find the Count of number of words in a string
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    int count =0;
+    char ch=' ';
+    
+   String s1 = src.nextLine();
+    for(int i=0;i<s1.length();i++){
+     if(s1.charAt(i)==ch){
+       count++;
+     }
+  }
+    System.out.println(count+1);
+}
+}
+
+---------------------------------------------------------------------------
+Alternate
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    int count =0;
+   
+    
+   String s1 = src.nextLine();
+    String arr[] = s1.split(" ");
+    
+    for(int i=0;i<arr.length;i++){
+     if(arr[i]!=" "){
+       count++;
+     }
+  }
+    System.out.println(count);
+}
+}
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+Find the Number of even digits in a number. If it is greater than 2 then print true otherwise print false
+
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+    Scanner src = new Scanner(System.in);
+    int num = src.nextInt();
+    int count =0;
+    int rem =0;
+    while(num>0){
+      rem = num%10;
+      if(rem%2==0){
+        count++;
+      }
+      num = num/10;
+    }
+    if(count>2){
+      System.out.println("true");
+    }else{
+      System.out.println("false");
+    }
+}
+}
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
