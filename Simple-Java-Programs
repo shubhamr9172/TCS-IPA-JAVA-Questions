@@ -325,3 +325,47 @@ class Main {
 }
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+in the main method, read a string and find the count of words starting with a vowel in the string. if no words are present in the string value then it should print "No string found".
+
+Note:
+All search should be case insensitive.
+
+Sample inputl:
+Everyone should practice and learn to became professional
+Output:
+2
+
+Sample input2:
+hi guys
+Output:
+No String found
+
+import java.util.*;
+class Main {
+  public static void main(String[] args) {
+  Scanner src = new Scanner(System.in);
+    String input = src.nextLine().toLowerCase();
+    String[] words = input.split(" ");
+
+    int count = 0;
+    for(String word:words){
+      if(word.length()>0 && "AEIOUaeiou".indexOf(word.charAt(0))!=-1){
+        count++;
+        
+      }
+    }
+    if(count==0){
+      System.out.println("No match found");
+    }else{
+      System.out.println(count);
+    }
+   
+    
+
+    
+  }
+}
+
+///////////////////////////////////////////////////////////////////////////////////////
