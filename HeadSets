@@ -1,0 +1,220 @@
+Create a class HeadSets with below attributes:
+headsetName - String
+brand-String 
+price - int
+available- boolean
+
+The above attributes should be private, write getters, setters and parameterized constructor 
+as required.
+
+Create class Solution with main method.
+Implement two static methods - findTotalPriceForGivenBrand and 
+findAvailableHeadsetWithSecondMinPrice in Solution class.
+
+findTotalPriceForGivenBrand method:
+The method will return the total price of Headsets from array of Headset objects for the 
+given brand(String parameter passed).
+If no Headsets with the given brand is present in the array of Headsets objects, then the 
+method should return 0.
+
+findAvailableHeadsetWithSecondMinPrice method:
+This method will take array of Headset objects as an input parameter and returns the 
+available Headset object with the second lowest/minimum price from the given array of 
+objects. 
+If no Headsets with the above condition is present in the array of Headsets objects, then the 
+method should return null.
+
+Note : No two Headsets will have the same price.
+ All the searches should be case insensitive.
+The above mentioned static methods should be called from the main method.
+For findTotalPriceForGivenBrand method - The main method should print the returned total 
+price as it is if the returned value is greater than 0 or it should print "No Headsets available 
+with the given brand".
+Eg: 4500
+where 4500 is the total Headsets price
+
+For findAvailableHeadsetWithSecondMinPrice method - The main method should print the 
+headsetsName and price from the returned Headsets object if the returned value is not 
+null.
+If the returned value is null then it should print "No Headsets available".
+
+Eg:Logitech Wired
+1500
+where Logitech Wired is the headsetName and 1500 is the price
+Before calling these static methods in main, use Scanner object to read the values of four 
+Headset objects referring attributes in the above mentioned attribute sequence.
+Next, read the value of String parameter for capturing brand.
+Consider below sample input and output:
+
+Input1:
+boAt BassHeads
+boAt
+1220
+true
+Over Ear Wired
+boAt
+549
+true
+In Ear with Mic
+JBL
+450
+true
+Buds 2 Neo
+RealMe
+500
+true
+boAt
+
+Output:
+1769
+Buds 2 Neo
+500
+
+Input2:
+boAt BassHeads
+boAt
+1220
+false
+Over Ear Wired
+boAt
+1549
+false
+In Ear with Mic
+JBL
+450
+false
+Buds 2 Neo
+RealMe
+500
+false
+boAt
+
+Output:
+2769
+No Headsets available
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------------
+package com.shubham;
+
+import java.util.Scanner;
+
+class HeadSets {
+     String headsetName;
+     String brand;
+     int price;
+     boolean available;
+
+     public HeadSets(String headsetName, String brand, int price, boolean available) {
+         this.headsetName = headsetName;
+         this.brand = brand;
+         this.price = price;
+         this.available = available;
+     }
+
+     public String getHeadsetName() {
+         return headsetName;
+     }
+
+     public void setHeadsetName(String headsetName) {
+         this.headsetName = headsetName;
+     }
+
+     public String getBrand() {
+         return brand;
+     }
+
+     public void setBrand(String brand) {
+         this.brand = brand;
+     }
+
+     public int getPrice() {
+         return price;
+     }
+
+     public void setPrice(int price) {
+         this.price = price;
+     }
+
+     public boolean isAvailable() {
+         return available;
+     }
+
+     public void setAvailable(boolean available) {
+         this.available = available;
+     }
+ }
+class Solution{
+     public static void main(String args[]){
+         Scanner src = new Scanner(System.in);
+         HeadSets h1[] = new HeadSets[4];
+         for(int i=0;i<4;i++){
+             String a = src.nextLine();
+             String b = src.nextLine();
+             int c = src.nextInt();src.nextLine();
+             boolean d = src.nextBoolean();src.nextLine();
+             h1[i]= new HeadSets(a,b,c,d);
+         }
+
+         String brand = src.nextLine();
+         int sum = findTotalPriceForGivenBrand(h1,brand);
+         if(sum>0){
+             System.out.print(sum);
+         }else{
+             System.out.println("No headsets available with the given brand");
+         }
+
+         HeadSets ans = findAvailableHeadsetWithSecondMinPrice(h1);
+         if(ans==null){
+             System.out.println("No headsets available");
+
+         }else{
+             System.out.println();
+             System.out.println(ans.getHeadsetName());
+             System.out.println(ans.getPrice());
+         }
+
+
+     }
+
+    public static HeadSets findAvailableHeadsetWithSecondMinPrice(HeadSets arr2[])
+    {
+        int Fmin = Integer.MAX_VALUE;
+        int Smin = Integer.MAX_VALUE;
+
+        for(int i=0;i<arr2.length;i++){
+            if(Fmin> arr2[i].getPrice()){
+                Fmin = arr2[i].getPrice();
+            }
+        }
+        for (int i=0;i< arr2.length;i++){
+            if(Fmin!=arr2[i].getPrice()  && Smin>arr2[i].getPrice() ){
+                Smin = arr2[i].getPrice();
+            }
+        }
+
+        for(int i=0;i< arr2.length;i++){
+            if(arr2[i].getPrice()==Smin){
+                return arr2[i];
+            }
+        }
+
+        return null;
+    }
+
+     public static int findTotalPriceForGivenBrand(HeadSets arr[],String brand){
+         int sum=0;
+         for(int i=0;i<arr.length;i++){
+             if(arr[i].getBrand().equalsIgnoreCase(brand)){
+                 sum = sum + arr[i].getPrice();
+             }
+         }
+         if(sum==0){
+             return 0;
+         }else{
+             return sum;
+         }
+     }
+}
+
+
