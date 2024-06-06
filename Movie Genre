@@ -1,0 +1,117 @@
+/******************************************************************************
+
+                                  Movie Genre
+                         Static Method "getMovieByGenre"
+
+*******************************************************************************/
+import java.util.*;
+public class Main
+{
+	public static void main(String[] args) {
+	Scanner src = new Scanner(System.in);
+	int num = src.nextInt();
+	src.nextLine();
+	
+	Movie arr[] = new Movie[num];
+	
+    	for(int i=0;i<num;i++){
+    	    String a = src.nextLine();
+    	    String b = src.nextLine();
+    	    String c = src.nextLine();
+    	    int d = src.nextInt();
+    	    src.nextLine();
+    	    arr[i] = new Movie(a,b,c,d);
+    	    
+    	}
+    	String genre = src.nextLine();
+    	Movie[] result = searchMovieByGenre(arr, genre);
+    	for(int i=0;i<result.length;i++){
+    	    if(result[i].getBudget()>80000000){
+    	        System.out.println("High Budget Movie");
+    	    }else{
+    	        System.out.println("Low budget movie");
+    	    }
+    	}
+	
+	}
+	public static Movie[] searchMovieByGenre(Movie arr[], String genre){
+	    ArrayList<Movie> refinedlist = new ArrayList<>();
+	    
+	    for(int i=0;i<arr.length;i++){
+	        if(arr[i].getGenre().equalsIgnoreCase(genre)){
+	            refinedlist.add(arr[i]);
+	        }
+	    }
+	    
+	    Movie[] refined = new Movie[refinedlist.size()];
+	    
+	    refined = refinedlist.toArray(refined);
+	    return refined;
+	    
+	}
+}
+
+class Movie{
+    String movieName;
+    String company;
+    String genre;
+    int budget;
+    
+        Movie(String movieName,String company, String genre, int budget){
+            this.movieName=movieName;
+            this.company=company;
+            this.genre=genre;
+            this.budget=budget;
+        }
+        
+        public void setMovieName(String movieName){
+            this.movieName=movieName;
+        }
+        public String getMovieName(){
+            return movieName;
+        }
+        
+        public void setCompany(String company){
+            this.company=company;
+        }
+        public String getCompany(){
+            return company;
+        }
+        
+        public void setGenre(String genre){
+            this.genre=genre;
+        }
+        public String getGenre(){
+            return genre;
+        }
+        
+        public void setBudget(int budget){
+            this.budget=budget;
+            
+        }
+        
+        public int getBudget(){
+            return budget;
+        }
+}
+
+
+Sample Input
+3
+Avengers
+Marvel
+Action
+1500000000
+Titanic
+Paramount
+Romance
+2000000000
+Inception
+Warner Bros
+Action
+1600000000
+action
+
+Sample Output
+High Budget Movie
+High Budget Movie
